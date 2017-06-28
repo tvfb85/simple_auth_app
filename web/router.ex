@@ -21,8 +21,4 @@ defmodule SimpleAuth.Router do
     resources "users", UserController, only: [:show, :new, :create]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SimpleAuth do
-  #   pipe_through :api
-  # end
 end
