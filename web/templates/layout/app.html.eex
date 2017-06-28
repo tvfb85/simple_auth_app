@@ -19,6 +19,9 @@
             <li>
               <%= link "Register", to: user_path(@conn, :new) %>
             </li>
+            <li>
+              <%= link "Sign in", to: session_path(@conn, :new) %>
+            </li>
           </ul>
         </nav>
         <span class="logo"></span>

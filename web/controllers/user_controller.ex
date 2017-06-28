@@ -15,15 +15,15 @@ defmodule SimpleAuth.UserController do
   end
 
   def create(conn, %{"user" => user_params}) do
-  changeset = %User{} |> User.registration_changeset(user_params)
-  case Repo.insert(changeset) do
-    {:ok, user} ->
-      conn
-      |> put_flash(:info, "#{user.name} created!")
-      |> redirect(to: user_path(conn, :show, user))
-    {:error, changeset} ->
-      render(conn, "new.html", changeset: changeset)
+    changeset = %User{} |> User.registration_changeset(user_params)
+    case Repo.insert(changeset) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "#{user.name} created!")
+        |> redirect(to: user_path(conn, :show, user))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
+     end
    end
- end
 
 end
