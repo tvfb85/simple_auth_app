@@ -13,6 +13,10 @@ defmodule SimpleAuth.UserControllerTest do
     conn = post conn, user_path(conn, :create), user: @valid_attrs
     user = Repo.get_by(User, email: "foo@bar.com")
     assert redirected_to(conn) == "/users/#{user.id}"
+    assert(
+    conn
+    |> Phoenix.Controller.get_flash("info")
+    |> String.contains?("john smith created"))
     assert Repo.get_by(User, email: "foo@bar.com")
   end
 
